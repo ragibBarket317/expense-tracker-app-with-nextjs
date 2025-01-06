@@ -1,0 +1,32 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.hero h1 {
+  font-size: 65px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+  background: linear-gradient(
+    90deg,
+    #86efac,
+    #3b82f6,
+    #9333ea
+  ); /* Gradient colors */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 30px;
+}
+
+.hero button {
+  font-size: 22px;
+  font-weight: semibold;
+  padding: 15px 30px;
+}
