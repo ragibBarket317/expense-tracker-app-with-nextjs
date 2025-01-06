@@ -1,0 +1,25 @@
+.sidebarTitle {
+  margin-bottom: 30px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.menuItem:hover {
+  cursor: pointer;
+}
+
+.active {
+  display: flex;
+  align-items: center;
+  color: #000;
+  background-color: #99f6e4;
+  border-radius: 5px;
+  gap: 5px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}

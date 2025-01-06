@@ -1,0 +1,17 @@
+.sidebar {
+  height: 100vh;
+  width: 300px;
+  padding: 20px;
+  background-color: var(--sidebar-bgColor);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.mainContent {
+  margin-left: 300px;
+}
+
+.content {
+  padding: 20px;
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './navbar.module.css'
 import ThemeToggleButton from '../ThemeToggle'
+import Link from 'next/link'
 
 const Navbar = () => {
   return (
@@ -9,7 +10,9 @@ const Navbar = () => {
         <h1>Expense Tracker</h1>
         <div className={styles.navbarRight}>
           <ThemeToggleButton />
-          <button>Get Started</button>
+          <Link href="/dashboard">
+            <button>Get Started</button>
+          </Link>
         </div>
       </div>
     </div>

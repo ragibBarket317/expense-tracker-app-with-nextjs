@@ -1,0 +1,42 @@
+.footer {
+  margin-top: 6rem;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  padding: 2rem 0;
+}
+
+.footerFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footerLogo h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.footerSocial {
+  margin: 1rem 0;
+}
+
+.footerSocial a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-size: 0.9rem;
+}
+
+.footerSocial a:hover {
+  color: #fff;
+}
+
+.footerCopyright {
+  padding: 1rem 0;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 1rem;
+  text-align: center;
+}
