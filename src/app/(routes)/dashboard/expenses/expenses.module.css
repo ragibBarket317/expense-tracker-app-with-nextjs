@@ -124,3 +124,91 @@
 .editButton {
   margin-right: 8px;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .singleExpenseHeader {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .singleExpenseFlex {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .addExpenseForm {
+    padding: 20px;
+  }
+
+  .expenseTable {
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+
+  .expenseTable table {
+    font-size: 14px;
+  }
+
+  .expenseTable table thead th,
+  .expenseTable table tbody td {
+    padding: 8px;
+  }
+
+  .inputContainer input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .addExpenseForm button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .editButton,
+  .deleteButton {
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .singleExpenseHeader {
+    text-align: center;
+    gap: 10px;
+  }
+
+  .singleExpenseHeader h1 {
+    font-size: 1.5rem;
+  }
+
+  .expenseTable table {
+    font-size: 12px;
+  }
+
+  .expenseTable table thead th,
+  .expenseTable table tbody td {
+    padding: 6px;
+  }
+
+  .addExpenseForm {
+    padding: 15px;
+  }
+
+  .inputContainer input {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .addExpenseForm button {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .editButton,
+  .deleteButton {
+    font-size: 10px;
+    padding: 4px;
+  }
+}

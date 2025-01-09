@@ -14,3 +14,21 @@
   display: flex;
   align-items: center;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar h1 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar h1 {
+    font-size: 1.2rem;
+  }
+
+  .navButton {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}

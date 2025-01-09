@@ -4,3 +4,17 @@
   gap: 20px;
   margin-top: 20px;
 }
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .budgetsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .budgetsGrid {
+    gap: 15px;
+  }
+}

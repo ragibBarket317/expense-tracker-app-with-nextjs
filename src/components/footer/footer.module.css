@@ -23,7 +23,6 @@
 }
 
 .footerSocial a {
-  color: #ddd;
   text-decoration: none;
   margin: 0 0.5rem;
   font-size: 0.9rem;
@@ -39,4 +38,73 @@
   color: #aaa;
   margin-top: 1rem;
   text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 1.5rem 0;
+  }
+
+  .footerFlex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footerLogo h2 {
+    font-size: 1.3rem;
+  }
+
+  .footerSocial {
+    margin: 1rem 0;
+  }
+
+  .footerSocial a {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1rem 0;
+  }
+
+  .footerLogo h2 {
+    font-size: 1.2rem;
+  }
+
+  .footerSocial a {
+    margin: 0 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .footerCopyright {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1rem 0;
+  }
+
+  .footerFlex {
+    gap: 1rem;
+  }
+
+  .footerLogo h2 {
+    font-size: 1rem;
+  }
+
+  .footerSocial {
+    margin: 0.5rem 0;
+  }
+
+  .footerSocial a {
+    font-size: 0.75rem;
+  }
+
+  .footerCopyright {
+    font-size: 0.7rem;
+  }
 }

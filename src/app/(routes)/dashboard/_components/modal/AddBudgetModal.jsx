@@ -77,7 +77,7 @@ const AddBudgetModal = ({ isOpen, closeModal, editData }) => {
         <div className={styles.modalOverlay} onClick={closeModal}>
           <div
             className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
+            onClick={(e) => e.stopPropagation()}
           >
             <span className={styles.close} onClick={closeModal}>
               &times;
@@ -91,7 +91,7 @@ const AddBudgetModal = ({ isOpen, closeModal, editData }) => {
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                   required
-                  readOnly={!!editData} // Make category read-only if editing
+                  readOnly={!!editData}
                 />
               </div>
               <div className={styles.inputContainer}>

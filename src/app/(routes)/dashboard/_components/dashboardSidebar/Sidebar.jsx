@@ -9,9 +9,9 @@ import Link from 'next/link'
 import styles from './sidebar.module.css'
 import { usePathname } from 'next/navigation'
 
-const Sidebar = () => {
+const Sidebar = ({ onLinkClick }) => {
   const path = usePathname()
-  console.log(path)
+
   const menuItem = [
     {
       id: 1,
@@ -31,7 +31,6 @@ const Sidebar = () => {
       path: '/dashboard/expenses',
       icon: LuClipboardList,
     },
-
     {
       id: 4,
       title: 'Upgrade',
@@ -39,12 +38,17 @@ const Sidebar = () => {
       icon: IoShieldCheckmarkOutline,
     },
   ]
+
   return (
     <div>
       <h2 className={styles.sidebarTitle}>Expense Tracker</h2>
       {menuItem.map((item) => (
         <div key={item.id}>
-          <Link className={styles.allLink} href={item.path}>
+          <Link
+            className={styles.allLink}
+            href={item.path}
+            onClick={onLinkClick}
+          >
             <div
               className={`${
                 path === item.path ? styles.active : styles.menuItem

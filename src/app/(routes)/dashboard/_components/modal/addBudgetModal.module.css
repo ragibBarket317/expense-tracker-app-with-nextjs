@@ -67,3 +67,42 @@
     transform: scale(1);
   }
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modalContent {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .inputContainer input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .close {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .inputContainer {
+    margin: 15px 0;
+  }
+
+  .inputContainer input {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .close {
+    font-size: 18px;
+    right: 15px;
+    top: 8px;
+  }
+}

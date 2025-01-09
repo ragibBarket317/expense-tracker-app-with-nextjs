@@ -47,3 +47,41 @@
   padding: 5px;
   border-radius: 50%;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboardOverview {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dashboardOverview > div {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .dashboardSummary {
+    flex-direction: column;
+  }
+
+  .chart,
+  .latestExpense {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboardOverview > div {
+    padding: 20px;
+  }
+
+  .icon {
+    font-size: 30px;
+  }
+
+  .chart h3,
+  .latestExpense h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+}

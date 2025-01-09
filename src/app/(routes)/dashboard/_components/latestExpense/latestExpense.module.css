@@ -1,7 +1,7 @@
 .expenseTable {
   margin: 0 auto;
-  overflow-x: auto; /* For horizontal scrolling on smaller screens */
-  max-width: 100%; /* Ensure the table doesn't overflow its container */
+  overflow-x: auto;
+  max-width: 100%;
   border-radius: 5px;
   margin: 30px 0;
 }
@@ -14,7 +14,7 @@
 
 /* Table Header */
 .expenseTable table thead {
-  background-color: var(--content-bgColor); /* Blue header */
+  background-color: var(--content-bgColor);
 }
 
 .expenseTable table thead th {
@@ -32,7 +32,7 @@
 }
 
 .expenseTable table tbody tr:hover {
-  background-color: var(--content-bgColor); /* Light gray on hover */
+  background-color: var(--content-bgColor);
 }
 
 /* Table Cells */
