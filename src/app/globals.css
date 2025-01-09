@@ -2,12 +2,16 @@
   --background-color: #ffffff;
   --text-color: #000000;
   --sidebar-bgColor: #e5e7eb;
+  --content-bgColor: #f1f5f9;
+  --table-borderColor: #e0e0e0;
 }
 
 [data-theme='dark'] {
   --background-color: #111827;
   --text-color: #ffffff;
   --sidebar-bgColor: #1f2937;
+  --content-bgColor: #1e293b;
+  --table-borderColor: #505050;
 }
 
 * {

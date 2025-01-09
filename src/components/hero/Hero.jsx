@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './hero.module.css'
+import Link from 'next/link'
 
 const Hero = () => {
   return (
@@ -10,7 +11,9 @@ const Hero = () => {
           to manage personal finances
         </h1>
         <div>
-          <button>Get Started</button>
+          <Link href="/dashboard">
+            <button>Get Started</button>
+          </Link>
         </div>
       </div>
     </div>

@@ -22,4 +22,8 @@
   gap: 5px;
   padding: 10px 20px;
   margin-bottom: 20px;
+  transition-behavior: smooth;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+  transition-property: background-color, color;
 }

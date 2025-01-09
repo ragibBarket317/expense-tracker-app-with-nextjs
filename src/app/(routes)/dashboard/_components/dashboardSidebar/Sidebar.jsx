@@ -5,6 +5,10 @@ import { MdWindow } from 'react-icons/md'
 import { GiWallet } from 'react-icons/gi'
 import { IoIosListBox } from 'react-icons/io'
 import { IoIosWarning } from 'react-icons/io'
+import { IoShieldCheckmarkOutline } from 'react-icons/io5'
+import { IoCalculatorOutline } from 'react-icons/io5'
+import { LuClipboardList } from 'react-icons/lu'
+import { RxDashboard } from 'react-icons/rx'
 import Link from 'next/link'
 import styles from './sidebar.module.css'
 import { usePathname } from 'next/navigation'
@@ -17,26 +21,26 @@ const Sidebar = () => {
       id: 1,
       title: 'Dashboard',
       path: '/dashboard',
-      icon: MdWindow,
+      icon: RxDashboard,
     },
     {
       id: 2,
-      title: 'Expense Summary',
-      path: '/dashboard/summary',
-      icon: IoIosListBox,
+      title: 'Budgets',
+      path: '/dashboard/budgets',
+      icon: IoCalculatorOutline,
     },
     {
       id: 3,
-      title: 'Add Expense',
+      title: 'Expense Summary',
       path: '/dashboard/expenses',
-      icon: GiWallet,
+      icon: LuClipboardList,
     },
 
     {
       id: 4,
-      title: 'Spending Limits',
-      path: '/dashboard/limits',
-      icon: IoIosWarning,
+      title: 'Upgrade',
+      path: '/dashboard/upgrade',
+      icon: IoShieldCheckmarkOutline,
     },
   ]
   return (

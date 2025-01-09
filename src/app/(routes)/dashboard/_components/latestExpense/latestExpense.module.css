@@ -1,0 +1,47 @@
+.expenseTable {
+  margin: 0 auto;
+  overflow-x: auto; /* For horizontal scrolling on smaller screens */
+  max-width: 100%; /* Ensure the table doesn't overflow its container */
+  border-radius: 5px;
+  background-color: #fff;
+  margin: 30px 0;
+}
+
+/* Table Styling */
+.expenseTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Table Header */
+.expenseTable table thead {
+  background-color: #f1f5f9; /* Blue header */
+  color: #000;
+}
+
+.expenseTable table thead th {
+  padding: 12px;
+  font-size: 16px;
+  text-align: left;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+/* Table Rows */
+.expenseTable table tbody tr {
+  border: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.expenseTable table tbody tr:hover {
+  background-color: #f7f7f7; /* Light gray on hover */
+}
+
+/* Table Cells */
+.expenseTable table td {
+  padding: 12px;
+  font-size: 14px;
+  color: #555;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
