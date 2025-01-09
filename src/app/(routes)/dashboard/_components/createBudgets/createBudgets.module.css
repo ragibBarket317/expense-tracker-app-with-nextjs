@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #f1f5f9;
+  background-color: var(--content-bgColor);
   border-radius: 5px;
   padding: 30px;
   height: 150px;

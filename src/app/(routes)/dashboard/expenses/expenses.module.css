@@ -23,7 +23,7 @@
 }
 
 .addExpenseForm {
-  background-color: #f1f5f9;
+  background-color: var(--content-bgColor);
   padding: 30px;
   border-radius: 5px;
 }
@@ -44,8 +44,8 @@
 
 .expenseTable {
   margin: 0 auto;
-  overflow-x: auto; /* For horizontal scrolling on smaller screens */
-  max-width: 100%; /* Ensure the table doesn't overflow its container */
+  overflow-x: auto;
+  max-width: 100%;
   border-radius: 5px;
   margin: 30px 0;
 }
@@ -96,16 +96,6 @@
 
 .expenseTable table td:first-child {
   text-align: start;
-}
-.expenseTable table td:last-child {
-  text-align: center;
-  color: #ff5c5c; /* Red for actions */
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.expenseTable table td:last-child:hover {
-  color: #ff0000; /* Darker red on hover */
 }
 
 .ExpenseSummaryFlex {

@@ -1,5 +1,5 @@
 .budgetItem {
-  background-color: #f1f5f9;
+  background-color: var(--content-bgColor);
   padding: 30px;
   border-radius: 5px;
   margin-bottom: 10px;
