@@ -1,10 +1,6 @@
 'use client'
 
 import React from 'react'
-import { MdWindow } from 'react-icons/md'
-import { GiWallet } from 'react-icons/gi'
-import { IoIosListBox } from 'react-icons/io'
-import { IoIosWarning } from 'react-icons/io'
 import { IoShieldCheckmarkOutline } from 'react-icons/io5'
 import { IoCalculatorOutline } from 'react-icons/io5'
 import { LuClipboardList } from 'react-icons/lu'

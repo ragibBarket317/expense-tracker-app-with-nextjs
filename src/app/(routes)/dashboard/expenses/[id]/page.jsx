@@ -129,7 +129,7 @@ const SingleExpensePage = ({ params }) => {
     }
 
     fetchLimits()
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -147,7 +147,7 @@ const SingleExpensePage = ({ params }) => {
     }
 
     fetchExpenses()
-  }, [])
+  }, [dispatch])
 
   const handleDeleteExpense = async (expenseId) => {
     try {

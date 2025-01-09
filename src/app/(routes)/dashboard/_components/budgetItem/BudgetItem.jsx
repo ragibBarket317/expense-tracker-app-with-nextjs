@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './budgetItem.module.css'
-import Link from 'next/link'
 import { useSelector } from 'react-redux'
 
 const BudgetItem = ({ limit }) => {

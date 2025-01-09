@@ -31,7 +31,7 @@ const ExpenseSummaryPage = () => {
       }
     }
     fetchExpenses()
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     const fetchSummary = async (month, year) => {

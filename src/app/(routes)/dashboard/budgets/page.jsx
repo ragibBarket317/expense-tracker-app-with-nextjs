@@ -30,7 +30,7 @@ const BudgetsPage = () => {
     }
 
     fetchLimits()
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -48,7 +48,7 @@ const BudgetsPage = () => {
     }
 
     fetchExpenses()
-  }, [])
+  }, [dispatch])
 
   if (loading) {
     return <Loader />
