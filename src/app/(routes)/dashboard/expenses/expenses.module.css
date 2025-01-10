@@ -22,8 +22,13 @@
   margin: 20px 0;
 }
 
+.budgetItem {
+  width: 50%;
+}
+
 .addExpenseForm {
   background-color: var(--content-bgColor);
+  width: 50%;
   padding: 30px;
   border-radius: 5px;
 }
@@ -48,6 +53,10 @@
   max-width: 100%;
   border-radius: 5px;
   margin: 30px 0;
+}
+
+.expenseTable h2 {
+  margin: 20px 0;
 }
 
 /* Table Styling */
@@ -138,7 +147,12 @@
     gap: 20px;
   }
 
+  .budgetItem {
+    width: 100%;
+  }
+
   .addExpenseForm {
+    width: 100%;
     padding: 20px;
   }
 
@@ -192,7 +206,12 @@
     padding: 6px;
   }
 
+  .budgetItem {
+    width: 100%;
+  }
+
   .addExpenseForm {
+    width: 100%;
     padding: 15px;
   }
 

@@ -24,7 +24,6 @@ export const Navbar = () => {
       {/* Navbar */}
       <div className={styles.navbar}>
         <div className={styles.navbarFlex}>
-          {/* Hamburger Icon */}
           <div className={styles.hamburger} onClick={toggleSidebar}>
             <AiOutlineMenu />
           </div>
@@ -48,12 +47,10 @@ export const Navbar = () => {
         }`}
       >
         <div className={styles.sidebarContent}>
-          {/* Close Button */}
           <div className={styles.sidebarClose} onClick={closeSidebar}>
             <AiOutlineClose />
           </div>
 
-          {/* Sidebar Links */}
           <Sidebar onLinkClick={closeSidebar} />
         </div>
       </div>

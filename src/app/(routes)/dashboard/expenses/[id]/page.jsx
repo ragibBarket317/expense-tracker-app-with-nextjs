@@ -1,18 +1,18 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { FaRegEdit } from 'react-icons/fa'
-import { FaRegTrashAlt } from 'react-icons/fa'
-
-import axios from 'axios'
-import { setExpenses, setLimits } from '@/redux/slices/expenseSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import BudgetItem from '../../_components/budgetItem/BudgetItem'
-import styles from '../expenses.module.css'
-import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
+import { useDispatch, useSelector } from 'react-redux'
+import { setExpenses, setLimits } from '@/redux/slices/expenseSlice'
+import BudgetItem from '../../_components/budgetItem/BudgetItem'
 import AddBudgetModal from '../../_components/modal/AddBudgetModal'
 import Loader from '@/components/loader/Loader'
+import styles from '../expenses.module.css'
+import axios from 'axios'
+import toast from 'react-hot-toast'
+import ExpenseHeader from '../_components/ExpenseHeader'
+import ExpenseForm from '../_components/ExpenseForm'
+import ExpenseTable from '../_components/ExpenseTable'
 
 const SingleExpensePage = ({ params }) => {
   const route = useRouter()
@@ -21,36 +21,63 @@ const SingleExpensePage = ({ params }) => {
 
   const [editingExpense, setEditingExpense] = useState(null)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-  const [category, setCategory] = useState('')
   const [amount, setAmount] = useState('')
   const [purpose, setPurpose] = useState('')
   const [loading, setLoading] = useState(true)
 
-  const getCategory = limits && limits.find((limit) => limit._id === params.id)
+  const getCategory = limits?.find((limit) => limit._id === params.id)
   const getExpensesForCategory =
-    expenses &&
-    getCategory &&
-    expenses.filter((expense) => expense.category === getCategory.category)
+    expenses?.filter((expense) => expense.category === getCategory?.category) ||
+    []
 
-  console.log('getExpensesForCategory', getExpensesForCategory)
+  // Fetch limits
+  useEffect(() => {
+    const fetchLimits = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/limits`
+        )
+        if (response.status === 200) {
+          dispatch(setLimits(response.data))
+        }
+      } catch (error) {
+        console.error('Failed to fetch Limits', error)
+      } finally {
+        setLoading(false)
+      }
+    }
 
-  console.log('getCategory', getCategory)
+    fetchLimits()
+  }, [dispatch])
 
-  const handleOpenEditModal = () => {
-    setIsEditModalOpen(true)
-  }
+  // Fetch expenses
+  useEffect(() => {
+    const fetchExpenses = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/expenses`
+        )
+        if (response.status === 200) {
+          dispatch(setExpenses(response.data))
+        }
+      } catch (error) {
+        console.error('Failed to fetch Expenses', error)
+      } finally {
+        setLoading(false)
+      }
+    }
 
-  const handleCloseEditModal = () => {
-    setIsEditModalOpen(false)
-  }
+    fetchExpenses()
+  }, [dispatch])
 
-  const handleEditExpense = (expense) => {
-    setPurpose(expense.purpose)
-    setAmount(expense.amount.toString())
-    setEditingExpense(expense) // Set the expense being edited
-  }
+  useEffect(() => {
+    if (editingExpense) {
+      setAmount(editingExpense.amount)
+      setPurpose(editingExpense.purpose)
+    }
+  }, [editingExpense])
 
-  const handleAddExpense = async (e) => {
+  const handleAddOrEditExpense = async (e) => {
     e.preventDefault()
 
     if (editingExpense) {
@@ -113,186 +140,83 @@ const SingleExpensePage = ({ params }) => {
     }
   }
 
-  useEffect(() => {
-    const fetchLimits = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/limits`
-        )
-        console.log('response limit', response.data)
-        dispatch(setLimits(response.data))
-      } catch (error) {
-        console.error('Failed to fetch Limits', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchLimits()
-  }, [dispatch])
-
-  useEffect(() => {
-    const fetchExpenses = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/expenses`
-        )
-        console.log('response expense', response.data)
-        dispatch(setExpenses(response.data))
-      } catch (error) {
-        console.error('Failed to fetch Expenses', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchExpenses()
-  }, [dispatch])
-
+  // Delete expense
   const handleDeleteExpense = async (expenseId) => {
     try {
       const response = await axios.delete(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/expenses/${expenseId}`
       )
-
       if (response.status === 200) {
         toast.success('Expense deleted successfully')
-        const updatedExpenses = expenses.filter(
-          (expense) => expense._id !== expenseId
+        dispatch(
+          setExpenses(expenses.filter((expense) => expense._id !== expenseId))
         )
-        dispatch(setExpenses(updatedExpenses))
       }
     } catch (error) {
       console.error('Failed to delete expense', error)
-      alert(error.response?.data?.error || 'Error deleting expense')
-    } finally {
-      setLoading(false)
+      toast.error('Error occurred while deleting the expense')
     }
   }
 
-  //Delete all expenses & limits
+  // Delete all data
   const handleDeleteAllData = async () => {
     try {
       const response = await axios.delete(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/categories/${getCategory._id}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/categories/${getCategory?._id}`
       )
-
       if (response.status === 200) {
         toast.success('All expenses and limits deleted successfully!')
         dispatch(
           setExpenses(
             expenses.filter(
-              (expense) => expense.category !== getCategory.category
+              (expense) => expense.category !== getCategory?.category
             )
           )
         )
         dispatch(
-          setLimits(limits.filter((limit) => limit._id !== getCategory._id))
+          setLimits(limits.filter((limit) => limit._id !== getCategory?._id))
         )
         route.push('/dashboard/budgets')
       }
     } catch (error) {
       console.error('Failed to delete all data', error)
-      toast.error(error.response?.data?.error || 'Error deleting all data')
+      toast.error('Error occurred while deleting all data')
     }
   }
-
-  if (loading) {
-    return <Loader />
-  }
+  // Loading
+  if (loading) return <Loader />
 
   return (
     <div>
-      <div className={styles.singleExpenseHeader}>
-        <div>
-          <h1>My Expense</h1>
-        </div>
-        <div>
-          <button className={styles.editButton} onClick={handleOpenEditModal}>
-            Edit
-          </button>
-          <button className={styles.deleteButton} onClick={handleDeleteAllData}>
-            Delete All
-          </button>
-        </div>
-      </div>
+      <ExpenseHeader
+        onEditClick={() => setIsEditModalOpen(true)}
+        onDeleteAllClick={handleDeleteAllData}
+      />
 
       <div className={styles.singleExpenseFlex}>
-        <div className={styles.singleExpense}>
+        <div className={styles.budgetItem}>
           <BudgetItem limit={getCategory} />
         </div>
-        <div className={styles.singleExpense}>
-          <div className={styles.addExpenseForm}>
-            <h2>{editingExpense ? 'Edit Expense' : 'Add Expense'}</h2>
-            <form onSubmit={handleAddExpense} className="form">
-              <div className={styles.inputContainer}>
-                <input
-                  type="text"
-                  placeholder="Purpose"
-                  value={purpose}
-                  onChange={(e) => setPurpose(e.target.value)}
-                  required
-                />
-              </div>
-              <div className={styles.inputContainer}>
-                <input
-                  type="text"
-                  placeholder="Amount (e.g., 200)"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  required
-                />
-              </div>
-              <button type="submit">
-                {editingExpense ? 'Edit Expense' : 'Add Expense'}
-              </button>
-            </form>
-          </div>
-        </div>
+        <ExpenseForm
+          editingExpense={editingExpense}
+          purpose={purpose}
+          amount={amount}
+          setPurpose={setPurpose}
+          setAmount={setAmount}
+          onSubmit={handleAddOrEditExpense}
+        />
       </div>
-      <div>
-        <h2>All Expenses for {getCategory && getCategory.category}</h2>
-        <div className={styles.expenseTable}>
-          <table>
-            <thead>
-              <tr>
-                <th>Purpose</th>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {getExpensesForCategory &&
-                getExpensesForCategory.map((expense, index) => (
-                  <tr key={index}>
-                    <td>{expense.purpose}</td>
-                    <td>{expense.amount}</td>
-                    <td>{expense.date.slice(0, 10)}</td>
-                    <td>
-                      <button
-                        className={styles.editButton}
-                        onClick={() => handleEditExpense(expense)}
-                      >
-                        <FaRegEdit />
-                      </button>
-                      <button
-                        className={styles.deleteButton}
-                        onClick={() => handleDeleteExpense(expense._id)}
-                      >
-                        <FaRegTrashAlt />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+
+      <ExpenseTable
+        expenses={getExpensesForCategory}
+        onEditExpense={setEditingExpense}
+        onDeleteExpense={handleDeleteExpense}
+      />
+
       {isEditModalOpen && (
         <AddBudgetModal
           isOpen={isEditModalOpen}
-          closeModal={handleCloseEditModal}
+          closeModal={() => setIsEditModalOpen(false)}
           editData={getCategory}
         />
       )}

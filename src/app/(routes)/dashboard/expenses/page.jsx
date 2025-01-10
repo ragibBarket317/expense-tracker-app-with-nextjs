@@ -22,8 +22,9 @@ const ExpenseSummaryPage = () => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/expenses`
         )
-        console.log('response expense', response.data)
-        dispatch(setExpenses(response.data))
+        if (response.status === 200) {
+          dispatch(setExpenses(response.data))
+        }
       } catch (error) {
         console.error('Failed to fetch Expenses', error)
       } finally {
@@ -42,8 +43,9 @@ const ExpenseSummaryPage = () => {
             params: { month, year },
           }
         )
-        console.log('response expense', response.data)
-        dispatch(setSummary(response.data))
+        if (response.status === 200) {
+          dispatch(setSummary(response.data))
+        }
       } catch (error) {
         console.error('Failed to fetch Expenses', error)
       } finally {

@@ -20,8 +20,9 @@ const BudgetsPage = () => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/limits`
         )
-        console.log('response limit', response.data)
-        dispatch(setLimits(response.data))
+        if (response.status === 200) {
+          dispatch(setLimits(response.data))
+        }
       } catch (error) {
         console.error('Failed to fetch Limits', error)
       } finally {
@@ -38,8 +39,9 @@ const BudgetsPage = () => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/expenses`
         )
-        console.log('response limit', response.data)
-        dispatch(setExpenses(response.data))
+        if (response.status === 200) {
+          dispatch(setExpenses(response.data))
+        }
       } catch (error) {
         console.error('Failed to fetch Limits', error)
       } finally {

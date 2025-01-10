@@ -19,7 +19,6 @@ const BudgetItem = ({ limit }) => {
   const percentageForProgress =
     totalExpenses && limit && (totalExpenses / limit.amount) * 100
 
-  console.log('getExpensesForCategoryBudget', getExpensesForCategory)
   return (
     <div>
       <div className={styles.budgetItem}>
